@@ -28,8 +28,10 @@ ConnectDB(MONGO_URI);
 
 app.use(express.json());
 app.use(morgan("dev"));
+
+
 app.use(cors({
-  origin:process.env.CLINT_URL,
+  origin:"https://e-commerce-client-2025.vercel.app/",
   credentials: true 
 }))
 
