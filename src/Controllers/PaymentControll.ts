@@ -4,7 +4,7 @@ import { Coupon } from "../Models/Coupon.js";
 import ErrorHandler from "../Utils/Utility-Class.js";
 
 
-export const createPaymentIntent1 = TryCatch(async(req , res , next)=>{
+export const createPaymentIntent = TryCatch(async(req , res , next)=>{
     const {amount} = req.body;
     if(!amount){
         return next(new ErrorHandler("Please enter Amount" , 400))
