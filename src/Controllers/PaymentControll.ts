@@ -4,7 +4,7 @@ import { Coupon } from "../Models/Coupon.js";
 import ErrorHandler from "../Utils/Utility-Class.js";
 
 
-export const createPaymentIntent = TryCatch(async(req , res , next)=>{
+export const createPaymentIntent1 = TryCatch(async(req , res , next)=>{
     const {amount} = req.body;
     if(!amount){
         return next(new ErrorHandler("Please enter Amount" , 400))
@@ -47,8 +47,9 @@ export const getAllCoupons = TryCatch(async (req, res , next) => {
 })
 
 export const deleteCoupon = TryCatch(async (req, res , next) => {
-    const { id } = req.params;
-    const coupon = await Coupon.findByIdAndDelete(id);
+    const { code } = req.params;
+    const coupon = await Coupon.find({code})
+    coupon.forEach((i)=>i.deleteOne())
     if(!coupon) return next(new ErrorHandler("Coupon Not Found", 404));
 
     res.status(200).json({ success: true , message: "Coupon Deleted Successfully"});
