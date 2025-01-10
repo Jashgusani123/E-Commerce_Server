@@ -9,6 +9,6 @@ app.post("/create" ,createPaymentIntent)
 app.get("/discount" , applyDiscount)
 app.post("/coupon/new" , adminOnly , createCoupon)
 app.get("/coupon/all" , adminOnly , getAllCoupons)
-app.delete("/coupon/:id" , adminOnly , deleteCoupon)
+app.delete("/coupon/:code" , adminOnly , deleteCoupon)
 
 export default app;
