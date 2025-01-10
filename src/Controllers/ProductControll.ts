@@ -172,7 +172,6 @@ export const getSearchProducts = TryCatch(
       baseQuery.category = category;
     }
 
-    console.log("Query Filters:", baseQuery);
 
     // Fetch filtered products and total count
     const [products, allProducts] = await Promise.all([

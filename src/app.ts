@@ -45,7 +45,6 @@ app.use("/api/v1/order", OrdersRoute);
 app.use("/api/v1/payment", PaymentRoute);
 app.use("/api/v1/admin/dashboard", AdminRoute);
 
-app.use("/uploads", express.static("uploads"));
 app.use(errorHandler);
 
 app.listen(PORT, () => {

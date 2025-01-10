@@ -1,3 +1,4 @@
+import { NextFunction, Request, Response } from "express";
 import { cache, stripe } from "../app.js";
 import { TryCatch } from "../Middlewares/error.js";
 import { Coupon } from "../Models/Coupon.js";
@@ -44,10 +45,17 @@ export const getAllCoupons = TryCatch(async (req, res , next) => {
     }
 })
 
-export const deleteCoupon = TryCatch(async (req, res , next) => {
+export const deleteCoupon = async (req: Request,
+    res: Response,
+    next: NextFunction) => {
+   try {
     const { code } = req.params;
+    
     const coupon = await Coupon.findOneAndDelete({code})
     if(!coupon) return next(new ErrorHandler("Coupon Not Found", 404));
     
     res.status(200).json({ success: true , message: "Coupon Deleted Successfully"});
-})
+   } catch (error) {
+        next(new ErrorHandler("Something Went Wrong" , 404))
+   }
+}

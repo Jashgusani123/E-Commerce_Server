@@ -101,7 +101,6 @@ export const getSingleOrder = TryCatch(async (req, res, next) => {
     if (!Orders) return next(new ErrorHandler("Order not found", 404));
     cache.set(key, JSON.stringify(Orders));
   }
-  console.log(Orders);
   
   return res.status(200).json({
     success: true,
