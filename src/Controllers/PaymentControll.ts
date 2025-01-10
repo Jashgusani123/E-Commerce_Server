@@ -28,9 +28,7 @@ export const createCoupon = TryCatch(async (req, res , next) => {
 
 export const applyDiscount = TryCatch(async (req, res , next) => {
     const { code } = req.query;
-    console.log(code);
     const discount = await Coupon.findOne({ code });
-    console.log(discount);
     if(!discount) return next(new ErrorHandler("Invalid Coupon Code", 400));
 
     res.status(200).json({ success: true  , discount:discount.amount});
