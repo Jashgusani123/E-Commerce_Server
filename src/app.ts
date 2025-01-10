@@ -31,7 +31,7 @@ app.use(morgan("dev"));
 
 
 app.use(cors({
-  origin:"https://e-commerce-client-2025-283nr2zpn-jashgusani123s-projects.vercel.app/",
+  origin:"https://e-commerce-client-2025-283nr2zpn-jashgusani123s-projects.vercel.app",
   credentials: true 
 }))
 
