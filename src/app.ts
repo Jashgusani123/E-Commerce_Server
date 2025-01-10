@@ -29,7 +29,8 @@ ConnectDB(MONGO_URI);
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors({
-  origin:process.env.CLINT_URL
+  origin:process.env.CLINT_URL,
+  credentials: true 
 }))
 
 export const stripe = new Stripe(STRIPE_KEY);
